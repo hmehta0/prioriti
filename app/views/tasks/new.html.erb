@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @task.errors.any? %>
+  <% @task.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Task</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_task" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for taskname -->
+      <div class="form-group">
+        <label for="taskname" class="control-label">
+          Taskname
+        </label>
+
+        <input type="text" id="taskname" name="taskname" placeholder="Taskname" class="form-control" value="<%= @task.taskname %>">
+      </div>
+
+      <!-- Label and input for taskprioriti -->
+      <div class="form-group">
+        <label for="taskprioriti" class="control-label">
+          Taskprioriti
+        </label>
+
+        <input type="text" id="taskprioriti" name="taskprioriti" placeholder="Taskprioriti" class="form-control" value="<%= @task.taskprioriti %>">
+      </div>
+
+      <!-- Label and input for taskduedate -->
+      <div class="form-group">
+        <label for="taskduedate" class="control-label">
+          Taskduedate
+        </label>
+
+        <input type="text" id="taskduedate" name="taskduedate" placeholder="Taskduedate" class="form-control" value="<%= @task.taskduedate %>">
+      </div>
+
+      <!-- Label and input for taskstatus -->
+      <div class="form-group">
+        <label for="taskstatus" class="control-label">
+          Taskstatus
+        </label>
+
+        <input type="text" id="taskstatus" name="taskstatus" placeholder="Taskstatus" class="form-control" value="<%= @task.taskstatus %>">
+      </div>
+
+      <!-- Label and input for list_id -->
+      <div class="form-group">
+        <label for="list_id" class="control-label">
+          List
+        </label>
+
+        <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @task.list_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Task
+      </button>
+      or
+      <a href="/tasks">Cancel</a>
+    </form>
+  </div>
+</div>

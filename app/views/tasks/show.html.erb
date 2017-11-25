@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Task #<%= @task.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Taskname</dt>
+      <dd><%= @task.taskname %></dd>
+
+      <dt>Taskprioriti</dt>
+      <dd><%= @task.taskprioriti %></dd>
+
+      <dt>Taskduedate</dt>
+      <dd><%= @task.taskduedate %></dd>
+
+      <dt>Taskstatus</dt>
+      <dd><%= @task.taskstatus %></dd>
+
+      <dt>List</dt>
+      <dd><%= @task.list_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/tasks" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/tasks/<%= @task.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_task/<%= @task.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

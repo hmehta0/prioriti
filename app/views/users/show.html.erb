@@ -20,3 +20,65 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many lists -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Lists
+      </li>
+
+      <% @user.lists.each do |list| %>
+        <li class="list-group-item">
+          <a href="/lists/<%= list.id %>">
+            <%= list.listname %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/lists/<%= list.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_list/<%= list.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many collaborators -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Collaborators
+      </li>
+
+      <% @user.collaborators.each do |collaborator| %>
+        <li class="list-group-item">
+          <a href="/collaborators/<%= collaborator.id %>">
+            <%= collaborator.list_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_collaborator/<%= collaborator.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

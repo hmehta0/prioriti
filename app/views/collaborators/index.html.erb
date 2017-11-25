@@ -15,7 +15,7 @@
 
       <% @collaborators.each do |collaborator| %>
       <tr>
-        <td><%= collaborator.list_id %></td>
+        <td><%= collaborator.list.listname %></td>
         <td>
           <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">Show</a>
           <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">Edit</a>

@@ -24,7 +24,7 @@
           List
         </label>
 
-        <input type="text" id="list_id" name="list_id" placeholder="List" class="form-control" value="<%= @collaborator.list_id %>">
+        <%= select_tag(:list_id, options_from_collection_for_select(List.all, :id, :listname, @collaborator.list_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

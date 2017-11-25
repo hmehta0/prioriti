@@ -3,6 +3,119 @@
     Subtasks
     <a href="/subtasks/new" class="btn btn-lg btn-success">New Subtask</a>
   </h1>
+</div><div class="row mb-1">
+  <div class="col-md-12">
+    <%= search_form_for @q, :class => collapse_search_form, :id => "subtasks_filters" do |f| %>
+      <p class="lead">Narrow results:</p>
+
+        <div class="form-group">
+    <%= f.label :subtaskname_cont, "Subtaskname contains" %>
+    <%= f.text_field :subtaskname_cont, :class => "form-control", :placeholder => "Subtaskname contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :subtaskstatus_cont, "Subtaskstatus contains" %>
+    <%= f.text_field :subtaskstatus_cont, :class => "form-control", :placeholder => "Subtaskstatus contains" %>
+  </div>
+
+<div class="form-group">
+          <%= f.label :subtaskduedate, "Subtaskduedate" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='subtaskduedategteqPicker'>
+                  <%= f.text_field :subtaskduedate_gteq, :class => "form-control", :placeholder => "Subtaskduedate greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='subtaskduedatelteqPicker'>
+                  <%= f.text_field :subtaskduedate_lteq, :class => "form-control", :placeholder => "Subtaskduedate less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#subtaskduedategteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#subtaskduedatelteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#subtaskduedategteqPicker').on("dp.change", function (e) {
+                  $('#subtaskduedatelteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#subtaskduedatelteqPicker').on("dp.change", function (e) {
+                  $('#subtaskduedategteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+    <%= f.label :subtaskprioriti_cont, "Subtaskprioriti contains" %>
+    <%= f.text_field :subtaskprioriti_cont, :class => "form-control", :placeholder => "Subtaskprioriti contains" %>
+  </div>
+
+<div class="form-group">
+          <%= f.label :created_at, "Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='created_atgteqPicker'>
+                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='created_atlteqPicker'>
+                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#created_atgteqPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atlteqPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#created_atgteqPicker').on("dp.change", function (e) {
+                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#created_atlteqPicker').on("dp.change", function (e) {
+                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+        <div class="form-group">
+      <%= f.label :task_taskname_cont, "Task taskname contains" %>
+      <%= f.text_field :task_taskname_cont, :class => "form-control", :placeholder => "Task taskname contains" %>
+    </div>
+
+      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+
+      <a href="/subtasks" class="btn btn-default btn-block mb-1">Clear filters</a>
+    <% end %>
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#subtasks_filters">
+      Show Filters
+    </a>
+  </div>
 </div>
 
 <div class="row">

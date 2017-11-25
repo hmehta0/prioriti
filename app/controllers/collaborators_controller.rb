@@ -1,6 +1,7 @@
 class CollaboratorsController < ApplicationController
   def index
-    @collaborators = Collaborator.page(params[:page]).per(10)
+    @q = Collaborator.ransack(params[:q])
+    @collaborators = @q.result(:distinct => true).includes(:list, :leader).page(params[:page]).per(10)
 
     render("collaborators/index.html.erb")
   end

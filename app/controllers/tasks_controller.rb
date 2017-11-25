@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.page(params[:page]).per(10)
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result(:distinct => true).includes(:list, :subtasks).page(params[:page]).per(10)
 
     render("tasks/index.html.erb")
   end

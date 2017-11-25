@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :collaborators,
+             :through => :lists,
+             :source => :collaborators
+
   # Validations
 
   # Include default devise modules. Others available are:

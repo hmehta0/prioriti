@@ -7,6 +7,10 @@ class Collaborator < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :leader,
+             :through => :list,
+             :source => :user
+
   # Validations
 
 end

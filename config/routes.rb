@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "lists#index"
   # Routes for the Collaborator resource:
   # CREATE
   get "/collaborators/new", :controller => "collaborators", :action => "new"

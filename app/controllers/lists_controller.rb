@@ -16,6 +16,8 @@ class ListsController < ApplicationController
   end
 
   def show
+    @collaborator = Collaborator.new
+    @task = Task.new
     @list = List.find(params[:id])
 
     render("lists/show.html.erb")

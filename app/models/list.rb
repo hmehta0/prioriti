@@ -1,6 +1,8 @@
 class List < ApplicationRecord
   # Direct associations
 
+  has_many   :collaborators
+
   has_many   :tasks,
              :dependent => :destroy
 

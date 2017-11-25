@@ -60,7 +60,7 @@
           Task
         </label>
 
-        <input type="text" id="task_id" name="task_id" placeholder="Task" class="form-control" value="<%= @subtask.task_id %>">
+        <%= select_tag(:task_id, options_from_collection_for_select(Task.all, :id, :taskname, @subtask.task_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">

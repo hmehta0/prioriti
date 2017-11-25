@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>
+    Collaborators
+    <a href="/collaborators/new" class="btn btn-lg btn-success">New Collaborator</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>List</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @collaborators.each do |collaborator| %>
+      <tr>
+        <td><%= collaborator.list_id %></td>
+        <td>
+          <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">Show</a>
+          <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_collaborator/<%= collaborator.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

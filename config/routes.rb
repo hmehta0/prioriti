@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Collaborator resource:
+  # CREATE
+  get "/collaborators/new", :controller => "collaborators", :action => "new"
+  post "/create_collaborator", :controller => "collaborators", :action => "create"
+
+  # READ
+  get "/collaborators", :controller => "collaborators", :action => "index"
+  get "/collaborators/:id", :controller => "collaborators", :action => "show"
+
+  # UPDATE
+  get "/collaborators/:id/edit", :controller => "collaborators", :action => "edit"
+  post "/update_collaborator/:id", :controller => "collaborators", :action => "update"
+
+  # DELETE
+  get "/delete_collaborator/:id", :controller => "collaborators", :action => "destroy"
+  #------------------------------
+
   # Routes for the Subtask resource:
   # CREATE
   get "/subtasks/new", :controller => "subtasks", :action => "new"

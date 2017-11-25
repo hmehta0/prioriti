@@ -28,8 +28,11 @@
         <td><%= list.user.email %></td>
         <td>
           <a href="/lists/<%= list.id %>" class="btn btn-primary">Show</a>
-          <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_list/<%= list.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == list.user %>
+            <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_list/<%= list.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

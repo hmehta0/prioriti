@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @subtask.errors.any? %>
+  <% @subtask.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Subtask #<%= @subtask.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_subtask/<%= @subtask.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for subtaskname -->
+      <div class="form-group">
+        <label for="subtaskname" class="control-label">
+          Subtaskname
+        </label>
+
+        <input type="text" id="subtaskname" name="subtaskname" placeholder="Subtaskname" class="form-control" value="<%= @subtask.subtaskname %>">
+      </div>
+
+      <!-- Label and input for subtaskprioriti -->
+      <div class="form-group">
+        <label for="subtaskprioriti" class="control-label">
+          Subtaskprioriti
+        </label>
+
+        <input type="text" id="subtaskprioriti" name="subtaskprioriti" placeholder="Subtaskprioriti" class="form-control" value="<%= @subtask.subtaskprioriti %>">
+      </div>
+
+      <!-- Label and input for subtaskduedate -->
+      <div class="form-group">
+        <label for="subtaskduedate" class="control-label">
+          Subtaskduedate
+        </label>
+
+        <input type="text" id="subtaskduedate" name="subtaskduedate" placeholder="Subtaskduedate" class="form-control" value="<%= @subtask.subtaskduedate %>">
+      </div>
+
+      <!-- Label and input for subtaskstatus -->
+      <div class="form-group">
+        <label for="subtaskstatus" class="control-label">
+          Subtaskstatus
+        </label>
+
+        <input type="text" id="subtaskstatus" name="subtaskstatus" placeholder="Subtaskstatus" class="form-control" value="<%= @subtask.subtaskstatus %>">
+      </div>
+
+      <!-- Label and input for task_id -->
+      <div class="form-group">
+        <label for="task_id" class="control-label">
+          Task
+        </label>
+
+        <input type="text" id="task_id" name="task_id" placeholder="Task" class="form-control" value="<%= @subtask.task_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Subtask
+      </button>
+      or
+      <a href="/subtasks/<%= @subtask.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

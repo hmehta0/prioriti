@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Subtask #<%= @subtask.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Subtaskname</dt>
+      <dd><%= @subtask.subtaskname %></dd>
+
+      <dt>Subtaskprioriti</dt>
+      <dd><%= @subtask.subtaskprioriti %></dd>
+
+      <dt>Subtaskduedate</dt>
+      <dd><%= @subtask.subtaskduedate %></dd>
+
+      <dt>Subtaskstatus</dt>
+      <dd><%= @subtask.subtaskstatus %></dd>
+
+      <dt>Task</dt>
+      <dd><%= @subtask.task_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/subtasks" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/subtasks/<%= @subtask.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_subtask/<%= @subtask.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

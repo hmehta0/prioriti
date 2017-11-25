@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Subtask resource:
+  # CREATE
+  get "/subtasks/new", :controller => "subtasks", :action => "new"
+  post "/create_subtask", :controller => "subtasks", :action => "create"
+
+  # READ
+  get "/subtasks", :controller => "subtasks", :action => "index"
+  get "/subtasks/:id", :controller => "subtasks", :action => "show"
+
+  # UPDATE
+  get "/subtasks/:id/edit", :controller => "subtasks", :action => "edit"
+  post "/update_subtask/:id", :controller => "subtasks", :action => "update"
+
+  # DELETE
+  get "/delete_subtask/:id", :controller => "subtasks", :action => "destroy"
+  #------------------------------
+
   # Routes for the Task resource:
   # CREATE
   get "/tasks/new", :controller => "tasks", :action => "new"

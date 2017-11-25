@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @list.errors.any? %>
+  <% @list.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit List #<%= @list.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_list/<%= @list.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for listname -->
+      <div class="form-group">
+        <label for="listname" class="control-label">
+          Listname
+        </label>
+
+        <input type="text" id="listname" name="listname" placeholder="Listname" class="form-control" value="<%= @list.listname %>">
+      </div>
+
+      <!-- Label and input for listtype -->
+      <div class="form-group">
+        <label for="listtype" class="control-label">
+          Listtype
+        </label>
+
+        <input type="text" id="listtype" name="listtype" placeholder="Listtype" class="form-control" value="<%= @list.listtype %>">
+      </div>
+
+      <!-- Label and input for listprioriti -->
+      <div class="form-group">
+        <label for="listprioriti" class="control-label">
+          Listprioriti
+        </label>
+
+        <input type="text" id="listprioriti" name="listprioriti" placeholder="Listprioriti" class="form-control" value="<%= @list.listprioriti %>">
+      </div>
+
+      <!-- Label and input for listduedate -->
+      <div class="form-group">
+        <label for="listduedate" class="control-label">
+          Listduedate
+        </label>
+
+        <input type="text" id="listduedate" name="listduedate" placeholder="Listduedate" class="form-control" value="<%= @list.listduedate %>">
+      </div>
+
+      <!-- Label and input for liststatus -->
+      <div class="form-group">
+        <label for="liststatus" class="control-label">
+          Liststatus
+        </label>
+
+        <input type="text" id="liststatus" name="liststatus" placeholder="Liststatus" class="form-control" value="<%= @list.liststatus %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @list.user_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update List
+      </button>
+      or
+      <a href="/lists/<%= @list.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -15,7 +15,13 @@
 
       <% @collaborators.each do |collaborator| %>
       <tr>
-        <td><%= collaborator.list.listname %></td>
+        <td>
+          <% if collaborator.list.present? %>
+            <a href="/lists/<%= collaborator.list.id %>">
+              <%= collaborator.list.listname %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">Show</a>
           <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">Edit</a>

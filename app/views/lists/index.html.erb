@@ -25,7 +25,13 @@
         <td><%= list.listprioriti %></td>
         <td><%= list.listduedate %></td>
         <td><%= list.liststatus %></td>
-        <td><%= list.user.email %></td>
+        <td>
+          <% if list.user.present? %>
+            <a href="/users/<%= list.user.id %>">
+              <%= list.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/lists/<%= list.id %>" class="btn btn-primary">Show</a>
           

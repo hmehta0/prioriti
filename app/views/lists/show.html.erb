@@ -21,7 +21,13 @@
       <dd><%= @list.liststatus %></dd>
 
       <dt>User</dt>
-      <dd><%= @list.user_id %></dd>
+      <dd>
+        <% if @list.user.present? %>
+          <a href="/users/<%= @list.user_id %>">
+            <%= @list.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

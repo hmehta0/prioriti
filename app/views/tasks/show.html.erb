@@ -18,7 +18,13 @@
       <dd><%= @task.taskstatus %></dd>
 
       <dt>List</dt>
-      <dd><%= @task.list_id %></dd>
+      <dd>
+        <% if @task.list.present? %>
+          <a href="/lists/<%= @task.list_id %>">
+            <%= @task.list.listname %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

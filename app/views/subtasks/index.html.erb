@@ -23,7 +23,13 @@
         <td><%= subtask.subtaskprioriti %></td>
         <td><%= subtask.subtaskduedate %></td>
         <td><%= subtask.subtaskstatus %></td>
-        <td><%= subtask.task.taskname %></td>
+        <td>
+          <% if subtask.task.present? %>
+            <a href="/tasks/<%= subtask.task.id %>">
+              <%= subtask.task.taskname %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/subtasks/<%= subtask.id %>" class="btn btn-primary">Show</a>
           <a href="/subtasks/<%= subtask.id %>/edit" class="btn btn-warning">Edit</a>

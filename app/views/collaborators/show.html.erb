@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>List</dt>
-      <dd><%= @collaborator.list_id %></dd>
+      <dd>
+        <% if @collaborator.list.present? %>
+          <a href="/lists/<%= @collaborator.list_id %>">
+            <%= @collaborator.list.listname %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

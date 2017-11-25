@@ -23,7 +23,13 @@
         <td><%= task.taskprioriti %></td>
         <td><%= task.taskduedate %></td>
         <td><%= task.taskstatus %></td>
-        <td><%= task.list.listname %></td>
+        <td>
+          <% if task.list.present? %>
+            <a href="/lists/<%= task.list.id %>">
+              <%= task.list.listname %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/tasks/<%= task.id %>" class="btn btn-primary">Show</a>
           <a href="/tasks/<%= task.id %>/edit" class="btn btn-warning">Edit</a>

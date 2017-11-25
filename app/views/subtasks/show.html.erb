@@ -18,7 +18,13 @@
       <dd><%= @subtask.subtaskstatus %></dd>
 
       <dt>Task</dt>
-      <dd><%= @subtask.task_id %></dd>
+      <dd>
+        <% if @subtask.task.present? %>
+          <a href="/tasks/<%= @subtask.task_id %>">
+            <%= @subtask.task.taskname %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

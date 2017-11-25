@@ -1,6 +1,6 @@
 class SubtasksController < ApplicationController
   def index
-    @subtasks = Subtask.all
+    @subtasks = Subtask.page(params[:page]).per(10)
 
     render("subtasks/index.html.erb")
   end

@@ -5,20 +5,20 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Listname</dt>
-      <dd><%= @list.listname %></dd>
+      <dt>Name</dt>
+      <dd><%= @list.name %></dd>
 
-      <dt>Listtype</dt>
-      <dd><%= @list.listtype %></dd>
+      <dt>Category</dt>
+      <dd><%= @list.category %></dd>
 
-      <dt>Listprioriti</dt>
-      <dd><%= @list.listprioriti %></dd>
+      <dt>Prioriti</dt>
+      <dd><%= @list.prioriti %></dd>
 
-      <dt>Listduedate</dt>
-      <dd><%= @list.listduedate %></dd>
+      <dt>Duedate</dt>
+      <dd><%= @list.duedate %></dd>
 
-      <dt>Liststatus</dt>
-      <dd><%= @list.liststatus %></dd>
+      <dt>Status</dt>
+      <dd><%= @list.status %></dd>
 
       <dt>User</dt>
       <dd>
@@ -59,7 +59,7 @@
       <% @list.tasks.each do |task| %>
         <li class="list-group-item">
           <a href="/tasks/<%= task.id %>">
-            <%= task.taskname %>
+            <%= task.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/tasks/<%= task.id %>" class="btn btn-primary">
@@ -80,40 +80,40 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for taskname -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="taskname" class="control-label">
-          Taskname
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="taskname" name="taskname" placeholder="Taskname" class="form-control" value="">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
       </div>
 
-      <!-- Label and input for taskprioriti -->
+      <!-- Label and input for prioriti -->
       <div class="form-group">
-        <label for="taskprioriti" class="control-label">
-          Taskprioriti
+        <label for="prioriti" class="control-label">
+          Prioriti
         </label>
 
-        <input type="text" id="taskprioriti" name="taskprioriti" placeholder="Taskprioriti" class="form-control" value="">
+        <input type="text" id="prioriti" name="prioriti" placeholder="Prioriti" class="form-control" value="">
       </div>
 
-      <!-- Label and input for taskduedate -->
+      <!-- Label and input for duedate -->
       <div class="form-group">
-        <label for="taskduedate" class="control-label">
-          Taskduedate
+        <label for="duedate" class="control-label">
+          Duedate
         </label>
 
-        <input type="text" id="taskduedate" name="taskduedate" placeholder="Taskduedate" class="form-control" value="">
+        <input type="text" id="duedate" name="duedate" placeholder="Duedate" class="form-control" value="">
       </div>
 
-      <!-- Label and input for taskstatus -->
+      <!-- Label and input for status -->
       <div class="form-group">
-        <label for="taskstatus" class="control-label">
-          Taskstatus
+        <label for="status" class="control-label">
+          Status
         </label>
 
-        <input type="text" id="taskstatus" name="taskstatus" placeholder="Taskstatus" class="form-control" value="">
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="">
       </div>
 
       <!-- Label and input for list_id -->
@@ -121,6 +121,60 @@
 
       <button class="btn btn-block btn-success">
         Create Task
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A List has many collaborations -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Collaborations
+      </li>
+
+      <% @list.collaborations.each do |collaboration| %>
+        <li class="list-group-item">
+          <a href="/collaborations/<%= collaboration.id %>">
+            <%= collaboration.list_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/collaborations/<%= collaboration.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/collaborations/<%= collaboration.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_collaboration/<%= collaboration.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_collaboration" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for list_id -->
+      <input type="hidden" name="list_id" value="<%= @list.id %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Collaboration
       </button>
     </form>
       </li>
@@ -137,38 +191,24 @@
         Collaborators
       </li>
 
-      <% @list.collaborators.each do |collaborator| %>
+      <% @list.collaborators.each do |user| %>
         <li class="list-group-item">
-          <a href="/collaborators/<%= collaborator.id %>">
-            <%= collaborator.list_id %>
+          <a href="/users/<%= user.id %>">
+            <%= user.email %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">
+            <a href="/users/<%= user.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">
+            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_collaborator/<%= collaborator.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>
         </li>
       <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_collaborator" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for list_id -->
-      <input type="hidden" name="list_id" value="<%= @list.id %>">
-
-      <button class="btn btn-block btn-success">
-        Create Collaborator
-      </button>
-    </form>
-      </li>
     </ul>
   </div>
 </div>

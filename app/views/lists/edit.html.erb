@@ -18,49 +18,49 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for listname -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="listname" class="control-label">
-          Listname
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="listname" name="listname" placeholder="Listname" class="form-control" value="<%= @list.listname %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @list.name %>">
       </div>
 
-      <!-- Label and input for listtype -->
+      <!-- Label and input for category -->
       <div class="form-group">
-        <label for="listtype" class="control-label">
-          Listtype
+        <label for="category" class="control-label">
+          Category
         </label>
 
-        <input type="text" id="listtype" name="listtype" placeholder="Listtype" class="form-control" value="<%= @list.listtype %>">
+        <input type="text" id="category" name="category" placeholder="Category" class="form-control" value="<%= @list.category %>">
       </div>
 
-      <!-- Label and input for listprioriti -->
+      <!-- Label and input for prioriti -->
       <div class="form-group">
-        <label for="listprioriti" class="control-label">
-          Listprioriti
+        <label for="prioriti" class="control-label">
+          Prioriti
         </label>
 
-        <input type="text" id="listprioriti" name="listprioriti" placeholder="Listprioriti" class="form-control" value="<%= @list.listprioriti %>">
+        <input type="text" id="prioriti" name="prioriti" placeholder="Prioriti" class="form-control" value="<%= @list.prioriti %>">
       </div>
 
-      <!-- Label and input for listduedate -->
+      <!-- Label and input for duedate -->
       <div class="form-group">
-        <label for="listduedate" class="control-label">
-          Listduedate
+        <label for="duedate" class="control-label">
+          Duedate
         </label>
 
-        <input type="text" id="listduedate" name="listduedate" placeholder="Listduedate" class="form-control" value="<%= @list.listduedate %>">
+        <input type="text" id="duedate" name="duedate" placeholder="Duedate" class="form-control" value="<%= @list.duedate %>">
       </div>
 
-      <!-- Label and input for liststatus -->
+      <!-- Label and input for status -->
       <div class="form-group">
-        <label for="liststatus" class="control-label">
-          Liststatus
+        <label for="status" class="control-label">
+          Status
         </label>
 
-        <input type="text" id="liststatus" name="liststatus" placeholder="Liststatus" class="form-control" value="<%= @list.liststatus %>">
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @list.status %>">
       </div>
 
       

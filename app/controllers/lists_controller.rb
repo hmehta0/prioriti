@@ -11,13 +11,13 @@ class ListsController < ApplicationController
 
   def index
     @q = List.ransack(params[:q])
-    @lists = @q.result(:distinct => true).includes(:user, :tasks, :collaborators).page(params[:page]).per(10)
+    @lists = @q.result(:distinct => true).includes(:user, :tasks, :collaborations, :collaborators).page(params[:page]).per(10)
 
     render("lists/index.html.erb")
   end
 
   def show
-    @collaborator = Collaborator.new
+    @collaboration = Collaboration.new
     @task = Task.new
     @list = List.find(params[:id])
 
@@ -33,11 +33,11 @@ class ListsController < ApplicationController
   def create
     @list = List.new
 
-    @list.listname = params[:listname]
-    @list.listtype = params[:listtype]
-    @list.listprioriti = params[:listprioriti]
-    @list.listduedate = params[:listduedate]
-    @list.liststatus = params[:liststatus]
+    @list.name = params[:name]
+    @list.category = params[:category]
+    @list.prioriti = params[:prioriti]
+    @list.duedate = params[:duedate]
+    @list.status = params[:status]
     @list.user_id = params[:user_id]
 
     save_status = @list.save
@@ -65,11 +65,11 @@ class ListsController < ApplicationController
   def update
     @list = List.find(params[:id])
 
-    @list.listname = params[:listname]
-    @list.listtype = params[:listtype]
-    @list.listprioriti = params[:listprioriti]
-    @list.listduedate = params[:listduedate]
-    @list.liststatus = params[:liststatus]
+    @list.name = params[:name]
+    @list.category = params[:category]
+    @list.prioriti = params[:prioriti]
+    @list.duedate = params[:duedate]
+    @list.status = params[:status]
     @list.user_id = params[:user_id]
 
     save_status = @list.save

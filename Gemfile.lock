@@ -20,12 +20,12 @@ GIT
 
 GIT
   remote: https://github.com/activeadmin/inherited_resources.git
-  revision: 46493ce10fc7d9f0bcd753f5d298c67ca83cf9b0
+  revision: 8603b3054683fa798134d76c12a32d9e287b307e
   specs:
-    inherited_resources (1.7.2)
-      actionpack (>= 4.2, < 5.2)
+    inherited_resources (1.8.0)
+      actionpack (>= 4.2, <= 5.2)
       has_scope (~> 0.6)
-      railties (>= 4.2, < 5.2)
+      railties (>= 4.2, <= 5.2)
       responders
 
 GIT
@@ -235,7 +235,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (3.2.0)
+    uglifier (4.0.0)
       execjs (>= 0.3.0, < 3)
     warden (1.2.7)
       rack (>= 1.0)

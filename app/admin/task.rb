@@ -1,6 +1,6 @@
 ActiveAdmin.register Task do
 
- permit_params :taskname, :taskprioriti, :taskduedate, :taskstatus, :list_id
+ permit_params :name, :prioriti, :duedate, :status, :list_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

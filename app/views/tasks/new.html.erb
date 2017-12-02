@@ -18,40 +18,40 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for taskname -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="taskname" class="control-label">
-          Taskname
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="taskname" name="taskname" placeholder="Taskname" class="form-control" value="<%= @task.taskname %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @task.name %>">
       </div>
 
-      <!-- Label and input for taskprioriti -->
+      <!-- Label and input for prioriti -->
       <div class="form-group">
-        <label for="taskprioriti" class="control-label">
-          Taskprioriti
+        <label for="prioriti" class="control-label">
+          Prioriti
         </label>
 
-        <input type="text" id="taskprioriti" name="taskprioriti" placeholder="Taskprioriti" class="form-control" value="<%= @task.taskprioriti %>">
+        <input type="text" id="prioriti" name="prioriti" placeholder="Prioriti" class="form-control" value="<%= @task.prioriti %>">
       </div>
 
-      <!-- Label and input for taskduedate -->
+      <!-- Label and input for duedate -->
       <div class="form-group">
-        <label for="taskduedate" class="control-label">
-          Taskduedate
+        <label for="duedate" class="control-label">
+          Duedate
         </label>
 
-        <input type="text" id="taskduedate" name="taskduedate" placeholder="Taskduedate" class="form-control" value="<%= @task.taskduedate %>">
+        <input type="text" id="duedate" name="duedate" placeholder="Duedate" class="form-control" value="<%= @task.duedate %>">
       </div>
 
-      <!-- Label and input for taskstatus -->
+      <!-- Label and input for status -->
       <div class="form-group">
-        <label for="taskstatus" class="control-label">
-          Taskstatus
+        <label for="status" class="control-label">
+          Status
         </label>
 
-        <input type="text" id="taskstatus" name="taskstatus" placeholder="Taskstatus" class="form-control" value="<%= @task.taskstatus %>">
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @task.status %>">
       </div>
 
       <!-- Label and input for list_id -->
@@ -60,7 +60,7 @@
           List
         </label>
 
-        <%= select_tag(:list_id, options_from_collection_for_select(List.all, :id, :listname, @task.list_id), :class => "form-control") %>
+        <%= select_tag(:list_id, options_from_collection_for_select(List.all, :id, :name, @task.list_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

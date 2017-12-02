@@ -18,40 +18,40 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for subtaskname -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="subtaskname" class="control-label">
-          Subtaskname
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="subtaskname" name="subtaskname" placeholder="Subtaskname" class="form-control" value="<%= @subtask.subtaskname %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @subtask.name %>">
       </div>
 
-      <!-- Label and input for subtaskprioriti -->
+      <!-- Label and input for prioriti -->
       <div class="form-group">
-        <label for="subtaskprioriti" class="control-label">
-          Subtaskprioriti
+        <label for="prioriti" class="control-label">
+          Prioriti
         </label>
 
-        <input type="text" id="subtaskprioriti" name="subtaskprioriti" placeholder="Subtaskprioriti" class="form-control" value="<%= @subtask.subtaskprioriti %>">
+        <input type="text" id="prioriti" name="prioriti" placeholder="Prioriti" class="form-control" value="<%= @subtask.prioriti %>">
       </div>
 
-      <!-- Label and input for subtaskduedate -->
+      <!-- Label and input for duedate -->
       <div class="form-group">
-        <label for="subtaskduedate" class="control-label">
-          Subtaskduedate
+        <label for="duedate" class="control-label">
+          Duedate
         </label>
 
-        <input type="text" id="subtaskduedate" name="subtaskduedate" placeholder="Subtaskduedate" class="form-control" value="<%= @subtask.subtaskduedate %>">
+        <input type="text" id="duedate" name="duedate" placeholder="Duedate" class="form-control" value="<%= @subtask.duedate %>">
       </div>
 
-      <!-- Label and input for subtaskstatus -->
+      <!-- Label and input for status -->
       <div class="form-group">
-        <label for="subtaskstatus" class="control-label">
-          Subtaskstatus
+        <label for="status" class="control-label">
+          Status
         </label>
 
-        <input type="text" id="subtaskstatus" name="subtaskstatus" placeholder="Subtaskstatus" class="form-control" value="<%= @subtask.subtaskstatus %>">
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="<%= @subtask.status %>">
       </div>
 
       <!-- Label and input for task_id -->
@@ -60,7 +60,7 @@
           Task
         </label>
 
-        <%= select_tag(:task_id, options_from_collection_for_select(Task.all, :id, :taskname, @subtask.task_id), :class => "form-control") %>
+        <%= select_tag(:task_id, options_from_collection_for_select(Task.all, :id, :name, @subtask.task_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

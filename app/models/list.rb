@@ -1,7 +1,8 @@
 class List < ApplicationRecord
   # Direct associations
 
-  has_many   :collaborators
+  has_many   :collaborations,
+             :dependent => :destroy
 
   has_many   :tasks,
              :dependent => :destroy
@@ -10,6 +11,10 @@ class List < ApplicationRecord
              :counter_cache => true
 
   # Indirect associations
+
+  has_many   :collaborators,
+             :through => :collaborations,
+             :source => :user
 
   # Validations
 

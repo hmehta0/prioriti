@@ -1,6 +1,6 @@
 ActiveAdmin.register List do
 
- permit_params :listname, :listtype, :listprioriti, :listduedate, :liststatus, :user_id
+ permit_params :name, :category, :prioriti, :duedate, :status, :user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

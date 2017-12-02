@@ -1,11 +1,11 @@
 class CreateLists < ActiveRecord::Migration
   def change
     create_table :lists do |t|
-      t.string :listname
-      t.string :listtype
-      t.string :listprioriti
-      t.datetime :listduedate
-      t.string :liststatus
+      t.string :name
+      t.string :category
+      t.string :prioriti
+      t.datetime :duedate
+      t.string :status
       t.integer :user_id
 
       t.timestamps

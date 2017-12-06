@@ -33,7 +33,7 @@
       <% @user.lists.each do |list| %>
         <li class="list-group-item">
           <a href="/lists/<%= list.id %>">
-            <%= list.listname %>
+            <%= list.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/lists/<%= list.id %>" class="btn btn-primary">
@@ -54,30 +54,65 @@
   </div>
 </div>
 
-<!-- A User has many collaborators -->
+<!-- A User has many collaborations -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Collaborators
+        Collaborations
       </li>
 
-      <% @user.collaborators.each do |collaborator| %>
+      <% @user.collaborations.each do |collaboration| %>
         <li class="list-group-item">
-          <a href="/collaborators/<%= collaborator.id %>">
-            <%= collaborator.list_id %>
+          <a href="/collaborations/<%= collaboration.id %>">
+            <%= collaboration.list_id %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">
+            <a href="/collaborations/<%= collaboration.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
+            <%if current_user == collaboration.user %>
+              <a href="/collaborations/<%= collaboration.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_collaboration/<%= collaboration.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many shared_lists -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Shared Lists
+      </li>
+
+      <% @user.shared_lists.each do |list| %>
+        <li class="list-group-item">
+          <a href="/lists/<%= list.id %>">
+            <%= list.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/lists/<%= list.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/delete_collaborator/<%= collaborator.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+            <%if current_user == list.user %>
+              <a href="/lists/<%= list.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_list/<%= list.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
           </div>
         </li>
       <% end %>

@@ -22,10 +22,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new
 
-    @task.taskname = params[:taskname]
-    @task.taskprioriti = params[:taskprioriti]
-    @task.taskduedate = params[:taskduedate]
-    @task.taskstatus = params[:taskstatus]
+    @task.name = params[:name]
+    @task.prioriti = params[:prioriti]
+    @task.duedate = params[:duedate]
+    @task.status = params[:status]
     @task.list_id = params[:list_id]
 
     save_status = @task.save
@@ -53,10 +53,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
 
-    @task.taskname = params[:taskname]
-    @task.taskprioriti = params[:taskprioriti]
-    @task.taskduedate = params[:taskduedate]
-    @task.taskstatus = params[:taskstatus]
+    @task.name = params[:name]
+    @task.prioriti = params[:prioriti]
+    @task.duedate = params[:duedate]
+    @task.status = params[:status]
     @task.list_id = params[:list_id]
 
     save_status = @task.save

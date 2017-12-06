@@ -1,10 +1,10 @@
 class CreateSubtasks < ActiveRecord::Migration
   def change
     create_table :subtasks do |t|
-      t.string :subtaskname
-      t.string :subtaskprioriti
-      t.datetime :subtaskduedate
-      t.string :subtaskstatus
+      t.string :name
+      t.integer :prioriti
+      t.datetime :duedate
+      t.string :status
       t.integer :task_id
 
       t.timestamps

@@ -21,10 +21,10 @@ class SubtasksController < ApplicationController
   def create
     @subtask = Subtask.new
 
-    @subtask.subtaskname = params[:subtaskname]
-    @subtask.subtaskprioriti = params[:subtaskprioriti]
-    @subtask.subtaskduedate = params[:subtaskduedate]
-    @subtask.subtaskstatus = params[:subtaskstatus]
+    @subtask.name = params[:name]
+    @subtask.prioriti = params[:prioriti]
+    @subtask.duedate = params[:duedate]
+    @subtask.status = params[:status]
     @subtask.task_id = params[:task_id]
 
     save_status = @subtask.save
@@ -52,10 +52,10 @@ class SubtasksController < ApplicationController
   def update
     @subtask = Subtask.find(params[:id])
 
-    @subtask.subtaskname = params[:subtaskname]
-    @subtask.subtaskprioriti = params[:subtaskprioriti]
-    @subtask.subtaskduedate = params[:subtaskduedate]
-    @subtask.subtaskstatus = params[:subtaskstatus]
+    @subtask.name = params[:name]
+    @subtask.prioriti = params[:prioriti]
+    @subtask.duedate = params[:duedate]
+    @subtask.status = params[:status]
     @subtask.task_id = params[:task_id]
 
     save_status = @subtask.save

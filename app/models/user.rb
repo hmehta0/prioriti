@@ -1,14 +1,17 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :collaborations,
+             :dependent => :destroy
+
   has_many   :lists,
              :dependent => :destroy
 
   # Indirect associations
 
-  has_many   :collaborators,
-             :through => :lists,
-             :source => :collaborators
+  has_many   :shared_lists,
+             :through => :collaborations,
+             :source => :list
 
   # Validations
 

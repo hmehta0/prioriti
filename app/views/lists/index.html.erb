@@ -9,21 +9,21 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-    <%= f.label :listname_cont, "Listname contains" %>
-    <%= f.text_field :listname_cont, :class => "form-control", :placeholder => "Listname contains" %>
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
   </div>
 
 <div class="form-group">
-    <%= f.label :liststatus_cont, "Liststatus contains" %>
-    <%= f.text_field :liststatus_cont, :class => "form-control", :placeholder => "Liststatus contains" %>
+    <%= f.label :status_cont, "Status contains" %>
+    <%= f.text_field :status_cont, :class => "form-control", :placeholder => "Status contains" %>
   </div>
 
 <div class="form-group">
-          <%= f.label :listduedate, "Listduedate" %>
+          <%= f.label :duedate, "Duedate" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='listduedategteqPicker'>
-                  <%= f.text_field :listduedate_gteq, :class => "form-control", :placeholder => "Listduedate greater than or equal to" %>
+              <div class='input-group date' id='duedategteqPicker'>
+                  <%= f.text_field :duedate_gteq, :class => "form-control", :placeholder => "Duedate greater than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -31,8 +31,8 @@
             </div>
 
             <div class='col-md-6'>
-              <div class='input-group date' id='listduedatelteqPicker'>
-                  <%= f.text_field :listduedate_lteq, :class => "form-control", :placeholder => "Listduedate less than or equal to" %>
+              <div class='input-group date' id='duedatelteqPicker'>
+                  <%= f.text_field :duedate_lteq, :class => "form-control", :placeholder => "Duedate less than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -42,30 +42,37 @@
       </div>
       <script type="text/javascript">
           $(function () {
-              $('#listduedategteqPicker').datetimepicker({
+              $('#duedategteqPicker').datetimepicker({
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#listduedatelteqPicker').datetimepicker({
+              $('#duedatelteqPicker').datetimepicker({
                   useCurrent: false,
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#listduedategteqPicker').on("dp.change", function (e) {
-                  $('#listduedatelteqPicker').data("DateTimePicker").minDate(e.date);
+              $('#duedategteqPicker').on("dp.change", function (e) {
+                  $('#duedatelteqPicker').data("DateTimePicker").minDate(e.date);
               });
-              $('#listduedatelteqPicker').on("dp.change", function (e) {
-                  $('#listduedategteqPicker').data("DateTimePicker").maxDate(e.date);
+              $('#duedatelteqPicker').on("dp.change", function (e) {
+                  $('#duedategteqPicker').data("DateTimePicker").maxDate(e.date);
               });
           });
       </script>
 
 <div class="form-group">
-    <%= f.label :listprioriti_cont, "Listprioriti contains" %>
-    <%= f.text_field :listprioriti_cont, :class => "form-control", :placeholder => "Listprioriti contains" %>
+  <%= f.label :prioriti, "Prioriti" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :prioriti_gteq, :class => "form-control", :placeholder => "Prioriti greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :prioriti_lteq, :class => "form-control", :placeholder => "Prioriti less than or equal to" %>
+    </div>
   </div>
+</div>
 
 <div class="form-group">
-    <%= f.label :listtype_cont, "Listtype contains" %>
-    <%= f.text_field :listtype_cont, :class => "form-control", :placeholder => "Listtype contains" %>
+    <%= f.label :category_cont, "Category contains" %>
+    <%= f.text_field :category_cont, :class => "form-control", :placeholder => "Category contains" %>
   </div>
 
 <div class="form-group">
@@ -114,8 +121,13 @@
     </div>
 
 <div class="form-group">
-      <%= f.label :tasks_taskname_cont, "Task taskname contains" %>
-      <%= f.text_field :tasks_taskname_cont, :class => "form-control", :placeholder => "Task taskname contains" %>
+      <%= f.label :tasks_name_cont, "Task name contains" %>
+      <%= f.text_field :tasks_name_cont, :class => "form-control", :placeholder => "Task name contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :collaborators_email_cont, "User email contains" %>
+      <%= f.text_field :collaborators_email_cont, :class => "form-control", :placeholder => "User email contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
@@ -132,22 +144,22 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Listname</th>
-        <th>Listtype</th>
-        <th>Listprioriti</th>
-        <th>Listduedate</th>
-        <th>Liststatus</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Prioriti</th>
+        <th>Duedate</th>
+        <th>Status</th>
         <th>User</th>
         <th>Actions</th>
       </tr>
 
       <% @lists.each do |list| %>
       <tr>
-        <td><%= list.listname %></td>
-        <td><%= list.listtype %></td>
-        <td><%= list.listprioriti %></td>
-        <td><%= list.listduedate %></td>
-        <td><%= list.liststatus %></td>
+        <td><%= list.name %></td>
+        <td><%= list.category %></td>
+        <td><%= list.prioriti %></td>
+        <td><%= list.duedate %></td>
+        <td><%= list.status %></td>
         <td>
           <% if list.user.present? %>
             <a href="/users/<%= list.user.id %>">

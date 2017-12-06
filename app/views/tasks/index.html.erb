@@ -9,21 +9,21 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
-    <%= f.label :taskname_cont, "Taskname contains" %>
-    <%= f.text_field :taskname_cont, :class => "form-control", :placeholder => "Taskname contains" %>
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
   </div>
 
 <div class="form-group">
-    <%= f.label :taskstatus_cont, "Taskstatus contains" %>
-    <%= f.text_field :taskstatus_cont, :class => "form-control", :placeholder => "Taskstatus contains" %>
+    <%= f.label :status_cont, "Status contains" %>
+    <%= f.text_field :status_cont, :class => "form-control", :placeholder => "Status contains" %>
   </div>
 
 <div class="form-group">
-          <%= f.label :taskduedate, "Taskduedate" %>
+          <%= f.label :duedate, "Duedate" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='taskduedategteqPicker'>
-                  <%= f.text_field :taskduedate_gteq, :class => "form-control", :placeholder => "Taskduedate greater than or equal to" %>
+              <div class='input-group date' id='duedategteqPicker'>
+                  <%= f.text_field :duedate_gteq, :class => "form-control", :placeholder => "Duedate greater than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -31,8 +31,8 @@
             </div>
 
             <div class='col-md-6'>
-              <div class='input-group date' id='taskduedatelteqPicker'>
-                  <%= f.text_field :taskduedate_lteq, :class => "form-control", :placeholder => "Taskduedate less than or equal to" %>
+              <div class='input-group date' id='duedatelteqPicker'>
+                  <%= f.text_field :duedate_lteq, :class => "form-control", :placeholder => "Duedate less than or equal to" %>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                   </span>
@@ -42,26 +42,33 @@
       </div>
       <script type="text/javascript">
           $(function () {
-              $('#taskduedategteqPicker').datetimepicker({
+              $('#duedategteqPicker').datetimepicker({
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#taskduedatelteqPicker').datetimepicker({
+              $('#duedatelteqPicker').datetimepicker({
                   useCurrent: false,
                   format: 'YYYY-MM-DD hh:mm:SS'
               });
-              $('#taskduedategteqPicker').on("dp.change", function (e) {
-                  $('#taskduedatelteqPicker').data("DateTimePicker").minDate(e.date);
+              $('#duedategteqPicker').on("dp.change", function (e) {
+                  $('#duedatelteqPicker').data("DateTimePicker").minDate(e.date);
               });
-              $('#taskduedatelteqPicker').on("dp.change", function (e) {
-                  $('#taskduedategteqPicker').data("DateTimePicker").maxDate(e.date);
+              $('#duedatelteqPicker').on("dp.change", function (e) {
+                  $('#duedategteqPicker').data("DateTimePicker").maxDate(e.date);
               });
           });
       </script>
 
 <div class="form-group">
-    <%= f.label :taskprioriti_cont, "Taskprioriti contains" %>
-    <%= f.text_field :taskprioriti_cont, :class => "form-control", :placeholder => "Taskprioriti contains" %>
+  <%= f.label :prioriti, "Prioriti" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :prioriti_gteq, :class => "form-control", :placeholder => "Prioriti greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :prioriti_lteq, :class => "form-control", :placeholder => "Prioriti less than or equal to" %>
+    </div>
   </div>
+</div>
 
 <div class="form-group">
           <%= f.label :created_at, "Created at" %>
@@ -104,13 +111,13 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :list_listname_cont, "List listname contains" %>
-      <%= f.text_field :list_listname_cont, :class => "form-control", :placeholder => "List listname contains" %>
+      <%= f.label :list_name_cont, "List name contains" %>
+      <%= f.text_field :list_name_cont, :class => "form-control", :placeholder => "List name contains" %>
     </div>
 
 <div class="form-group">
-      <%= f.label :subtasks_subtaskname_cont, "Subtask subtaskname contains" %>
-      <%= f.text_field :subtasks_subtaskname_cont, :class => "form-control", :placeholder => "Subtask subtaskname contains" %>
+      <%= f.label :subtasks_name_cont, "Subtask name contains" %>
+      <%= f.text_field :subtasks_name_cont, :class => "form-control", :placeholder => "Subtask name contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
@@ -127,24 +134,24 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Taskname</th>
-        <th>Taskprioriti</th>
-        <th>Taskduedate</th>
-        <th>Taskstatus</th>
+        <th>Name</th>
+        <th>Prioriti</th>
+        <th>Duedate</th>
+        <th>Status</th>
         <th>List</th>
         <th>Actions</th>
       </tr>
 
       <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.taskname %></td>
-        <td><%= task.taskprioriti %></td>
-        <td><%= task.taskduedate %></td>
-        <td><%= task.taskstatus %></td>
+        <td><%= task.name %></td>
+        <td><%= task.prioriti %></td>
+        <td><%= task.duedate %></td>
+        <td><%= task.status %></td>
         <td>
           <% if task.list.present? %>
             <a href="/lists/<%= task.list.id %>">
-              <%= task.list.listname %>
+              <%= task.list.name %>
             </a>
           <% end %>
         </td>

@@ -1,6 +1,6 @@
-ActiveAdmin.register Collaborator do
+ActiveAdmin.register Collaboration do
 
- permit_params :list_id
+ permit_params :list_id, :user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

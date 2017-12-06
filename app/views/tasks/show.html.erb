@@ -5,23 +5,23 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Taskname</dt>
-      <dd><%= @task.taskname %></dd>
+      <dt>Name</dt>
+      <dd><%= @task.name %></dd>
 
-      <dt>Taskprioriti</dt>
-      <dd><%= @task.taskprioriti %></dd>
+      <dt>Prioriti</dt>
+      <dd><%= @task.prioriti %></dd>
 
-      <dt>Taskduedate</dt>
-      <dd><%= @task.taskduedate %></dd>
+      <dt>Duedate</dt>
+      <dd><%= @task.duedate %></dd>
 
-      <dt>Taskstatus</dt>
-      <dd><%= @task.taskstatus %></dd>
+      <dt>Status</dt>
+      <dd><%= @task.status %></dd>
 
       <dt>List</dt>
       <dd>
         <% if @task.list.present? %>
           <a href="/lists/<%= @task.list_id %>">
-            <%= @task.list.listname %>
+            <%= @task.list.name %>
           </a>
         <% end %>
       </dd>
@@ -54,7 +54,7 @@
       <% @task.subtasks.each do |subtask| %>
         <li class="list-group-item">
           <a href="/subtasks/<%= subtask.id %>">
-            <%= subtask.subtaskname %>
+            <%= subtask.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/subtasks/<%= subtask.id %>" class="btn btn-primary">
@@ -75,40 +75,40 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for subtaskname -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="subtaskname" class="control-label">
-          Subtaskname
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="subtaskname" name="subtaskname" placeholder="Subtaskname" class="form-control" value="">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
       </div>
 
-      <!-- Label and input for subtaskprioriti -->
+      <!-- Label and input for prioriti -->
       <div class="form-group">
-        <label for="subtaskprioriti" class="control-label">
-          Subtaskprioriti
+        <label for="prioriti" class="control-label">
+          Prioriti
         </label>
 
-        <input type="text" id="subtaskprioriti" name="subtaskprioriti" placeholder="Subtaskprioriti" class="form-control" value="">
+        <input type="text" id="prioriti" name="prioriti" placeholder="Prioriti" class="form-control" value="">
       </div>
 
-      <!-- Label and input for subtaskduedate -->
+      <!-- Label and input for duedate -->
       <div class="form-group">
-        <label for="subtaskduedate" class="control-label">
-          Subtaskduedate
+        <label for="duedate" class="control-label">
+          Duedate
         </label>
 
-        <input type="text" id="subtaskduedate" name="subtaskduedate" placeholder="Subtaskduedate" class="form-control" value="">
+        <input type="text" id="duedate" name="duedate" placeholder="Duedate" class="form-control" value="">
       </div>
 
-      <!-- Label and input for subtaskstatus -->
+      <!-- Label and input for status -->
       <div class="form-group">
-        <label for="subtaskstatus" class="control-label">
-          Subtaskstatus
+        <label for="status" class="control-label">
+          Status
         </label>
 
-        <input type="text" id="subtaskstatus" name="subtaskstatus" placeholder="Subtaskstatus" class="form-control" value="">
+        <input type="text" id="status" name="status" placeholder="Status" class="form-control" value="">
       </div>
 
       <!-- Label and input for task_id -->

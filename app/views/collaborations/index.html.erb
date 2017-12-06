@@ -1,11 +1,11 @@
 <div class="page-header">
   <h1>
-    Collaborators
-    <a href="/collaborators/new" class="btn btn-lg btn-success">New Collaborator</a>
+    Collaborations
+    <a href="/collaborations/new" class="btn btn-lg btn-success">New Collaboration</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "collaborators_filters" do |f| %>
+    <%= search_form_for @q, :class => collapse_search_form, :id => "collaborations_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
@@ -49,20 +49,20 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :list_listname_cont, "List listname contains" %>
-      <%= f.text_field :list_listname_cont, :class => "form-control", :placeholder => "List listname contains" %>
+      <%= f.label :user_email_cont, "User email contains" %>
+      <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
     </div>
 
 <div class="form-group">
-      <%= f.label :leader_email_cont, "User email contains" %>
-      <%= f.text_field :leader_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+      <%= f.label :list_name_cont, "List name contains" %>
+      <%= f.text_field :list_name_cont, :class => "form-control", :placeholder => "List name contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-      <a href="/collaborators" class="btn btn-default btn-block mb-1">Clear filters</a>
+      <a href="/collaborations" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#collaborators_filters">
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#collaborations_filters">
       Show Filters
     </a>
   </div>
@@ -73,26 +73,34 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>List</th>
+        <th>User</th>
         <th>Actions</th>
       </tr>
 
-      <% @collaborators.each do |collaborator| %>
+      <% @collaborations.each do |collaboration| %>
       <tr>
         <td>
-          <% if collaborator.list.present? %>
-            <a href="/lists/<%= collaborator.list.id %>">
-              <%= collaborator.list.listname %>
+          <% if collaboration.list.present? %>
+            <a href="/lists/<%= collaboration.list.id %>">
+              <%= collaboration.list.name %>
             </a>
           <% end %>
         </td>
         <td>
-          <a href="/collaborators/<%= collaborator.id %>" class="btn btn-primary">Show</a>
-          <a href="/collaborators/<%= collaborator.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_collaborator/<%= collaborator.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% if collaboration.user.present? %>
+            <a href="/users/<%= collaboration.user.id %>">
+              <%= collaboration.user.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <a href="/collaborations/<%= collaboration.id %>" class="btn btn-primary">Show</a>
+          <a href="/collaborations/<%= collaboration.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_collaboration/<%= collaboration.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
     </table>
-    <%= paginate @collaborators, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @collaborations, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

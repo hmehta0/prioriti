@@ -5,23 +5,23 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Subtaskname</dt>
-      <dd><%= @subtask.subtaskname %></dd>
+      <dt>Name</dt>
+      <dd><%= @subtask.name %></dd>
 
-      <dt>Subtaskprioriti</dt>
-      <dd><%= @subtask.subtaskprioriti %></dd>
+      <dt>Prioriti</dt>
+      <dd><%= @subtask.prioriti %></dd>
 
-      <dt>Subtaskduedate</dt>
-      <dd><%= @subtask.subtaskduedate %></dd>
+      <dt>Duedate</dt>
+      <dd><%= @subtask.duedate %></dd>
 
-      <dt>Subtaskstatus</dt>
-      <dd><%= @subtask.subtaskstatus %></dd>
+      <dt>Status</dt>
+      <dd><%= @subtask.status %></dd>
 
       <dt>Task</dt>
       <dd>
         <% if @subtask.task.present? %>
           <a href="/tasks/<%= @subtask.task_id %>">
-            <%= @subtask.task.taskname %>
+            <%= @subtask.task.name %>
           </a>
         <% end %>
       </dd>
